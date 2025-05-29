@@ -5,6 +5,7 @@ import JsonCard from './components/JsonCard.vue'
 
 const jsonData = ref({})
 const cardTitle = ref('JSON Card')
+const showJsonExtension = ref(false)
 
 const handleDataUpdate = (data) => {
   jsonData.value = data
@@ -12,6 +13,10 @@ const handleDataUpdate = (data) => {
 
 const handleTitleUpdate = (title) => {
   cardTitle.value = title
+}
+
+const handleExtensionUpdate = (show) => {
+  showJsonExtension.value = show
 }
 </script>
 
@@ -28,6 +33,7 @@ const handleTitleUpdate = (title) => {
           <JsonCardGenerator 
             @data-update="handleDataUpdate"
             @title-update="handleTitleUpdate"
+            @extension-update="handleExtensionUpdate"
           />
         </div>
         
@@ -35,6 +41,7 @@ const handleTitleUpdate = (title) => {
           <JsonCard 
             :data="jsonData"
             :title="cardTitle"
+            :showJsonExtension="showJsonExtension"
           />
         </div>
       </div>
